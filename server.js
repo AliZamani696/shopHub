@@ -18,7 +18,10 @@ app.use("/AdminDashboard",AdminRoute);
 const Router = require("./App-Products/src/routes/ProductsRoutes");
 app.use("/Product",Router);
 
-const port = 9080
+const connectDB = require("./config/database");
+connectDB()
+
+const port = require("./config/port")
 app.listen(port,()=>{
         console.log("server is runing")
 })
