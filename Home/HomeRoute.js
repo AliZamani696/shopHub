@@ -2,9 +2,10 @@ const express = require("express");
 const path = require("path")
 
 const Home = express.Router();
-const AppProducts= require("./../App-Products/src/routes/IndexRouter")
+const{getAllproducts}= require("./../App-Products/src/routes/IndexRouter")
+
 Home.get("/",async(req,res)=>{
-        let products = await AppProducts.AllProducts()
+        let products = await getAllproducts()
         res.render("Home",{products})
 
 })

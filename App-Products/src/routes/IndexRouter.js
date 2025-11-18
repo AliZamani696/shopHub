@@ -1,16 +1,23 @@
 const BaseRoute = require("./BaseRoute")
 
 module.exports = new class extends BaseRoute{
+        async getAllproducts(req,res){
+                try{
+                        const ProductModel = require("./../models/ProductModels");
+                        const products = await ProductModel.find()
+                        return products;
+                }catch(err){
+                        console.log(err)
+                }
+          }
         async AllProducts (req,res){
                 try{
                         const ProductModel = require("./../models/ProductModels");
                         const products = await ProductModel.find()
-                        return products
-                       ;
+                        res.render("AllProducts",{products})
                 }catch(err){
                         console.error(err)
                 }
-                 res.render("AllProducts")
         }
         async FindProduct (req,res){
                 try{
