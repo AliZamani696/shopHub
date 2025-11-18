@@ -6,7 +6,6 @@ const ViewsRoutes = require("./Home/ViewsRoutes")
 const app = express();
 app.set("view engine","ejs");
 app.set("views",ViewsRoutes);
-// app.use(express.static( __dirname + '/public'));
 
 
 app.use(express.urlencoded({extended:true}));
