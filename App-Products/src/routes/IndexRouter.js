@@ -5,11 +5,12 @@ module.exports = new class extends BaseRoute{
                 try{
                         const ProductModel = require("./../models/ProductModels");
                         const products = await ProductModel.find()
-                        console.log(products)
-                        res.render("AllProducts")
+                        return products
+                       ;
                 }catch(err){
                         console.error(err)
                 }
+                 res.render("AllProducts")
         }
         async FindProduct (req,res){
                 try{

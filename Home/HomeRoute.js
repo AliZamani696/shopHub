@@ -1,8 +1,12 @@
 const express = require("express");
-const Home = express.Router();
+const path = require("path")
 
-Home.get("/",(req,res)=>{
-        res.render("Home")
+const Home = express.Router();
+const AppProducts= require("./../App-Products/src/routes/IndexRouter")
+Home.get("/",async(req,res)=>{
+        let products = await AppProducts.AllProducts()
+        res.render("Home",{products})
+
 })
 Home.get("/About",(req,res)=>{
         res.render("About")
@@ -10,4 +14,9 @@ Home.get("/About",(req,res)=>{
 Home.get("/Contact",(req,res)=>{
         res.render("Contact")
 })
+
+Home.post("/SearchBar",(req,res)=>{
+        console.log(req.body)
+})
+
 module.exports = Home
