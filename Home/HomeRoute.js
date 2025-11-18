@@ -2,10 +2,12 @@ const express = require("express");
 const path = require("path")
 
 const Home = express.Router();
-const{getAllproducts}= require("./../App-Products/src/routes/IndexRouter")
+Home.use(express.static(path.join(__dirname+"/public")))
 
+const{getAllproducts}= require("./../App-Products/src/routes/IndexRouter")
 Home.get("/",async(req,res)=>{
         let products = await getAllproducts()
+        // console.log((())))
         res.render("Home",{products})
 
 })
