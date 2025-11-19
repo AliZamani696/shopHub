@@ -1,5 +1,5 @@
 const BaseRoute = require("./BaseRoute")
-
+const  ensureDirectory = require("./../../../AdminDashboard/uploads/UploadScript")
 module.exports = new class extends BaseRoute{
         async getAllproducts(req,res){
                 try{
@@ -50,27 +50,28 @@ module.exports = new class extends BaseRoute{
                 console.log(products)
         }
         async AddProduct(req,res){
-              try{
-                  const {
-                        productName,
-                        productCategory,
-                        productPrice,
-                        productStock,
-                        productDescription,} = req.body
-                        const ProductModel = require("./../models/ProductModels");
-                        let NewProduct = new ProductModel({
-                                productName,
-                                productCategory,
-                                productPrice,
-                                productStock,
-                                productDescription,
-                        })
-                        NewProduct.save()
-                        res.render("AdminDashboard")
+        //       try{
+        //           const {
+        //                 productName,
+        //                 productCategory,
+        //                 productPrice,
+        //                 productStock,
+        //                 productDescription,} = req.body
+        //                 const ProductModel = require("./../models/ProductModels");
+        //                 let NewProduct = new ProductModel({
+        //                         productName,
+        //                         productCategory,
+        //                         productPrice,
+        //                         productStock,
+        //                         productDescription,
+        //                 })
+        //                 NewProduct.save()
+        //                 res.render("AdminDashboard")
 
-              }catch(err){
-                console.error(err)
-              }
+        //       }catch(err){
+        //         console.error(err)
+        //       }
+        await ensureDirectory("./Home/public/images");
 
         }
         async  Category(req,res){
