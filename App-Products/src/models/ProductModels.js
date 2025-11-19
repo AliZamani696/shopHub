@@ -52,7 +52,20 @@ const ProductSchema = new mongoose.Schema({
                 //         message: 'Description must contain at least 10 words'
                 // }
 
-        }
+        },
+        productImagePath :{
+                 type: String, // This will store the image URL or file path
+    required: [true, 'Product image is required']
+        },
+        productNew:{
+                type:Boolean,
+                default:false,
 
+        },
+            productSale:{
+                type:Boolean,
+                default:false,
+
+        },
 })
 module.exports = mongoose.model('Product', ProductSchema);
